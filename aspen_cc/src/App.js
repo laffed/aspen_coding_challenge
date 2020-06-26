@@ -9,7 +9,9 @@ function App() {
   const [id, setId] = useState(1);
   const [style, setStyle] = useState({
     fontWeight: "400",
-    fontSize: "20px"
+    fontSize: "20px",
+    height: "120px",
+    lineHeight: "100px"
   });
 
   const handleResize = e => {
