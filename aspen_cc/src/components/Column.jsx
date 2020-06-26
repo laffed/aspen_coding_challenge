@@ -1,14 +1,11 @@
 import React from 'react'
 
 function Column(props) {
-    const { id, color } = props;
-    const colStyles = {
-        backgroundColor: color,
-        fontWeight: "400",
-        fontSize: "20px"
-    }
+    const { id, style, color } = props;
+
+
     return (
-        <div style={colStyles}>
+        <div style={{ ...style, backgroundColor: color }}>
             {id}
         </div>
     )

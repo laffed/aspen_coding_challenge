@@ -7,9 +7,20 @@ function App() {
   const [firstColor, setFirstColor] = useState(randomColor());
   const [color, setColor] = useState(randomColor());
   const [id, setId] = useState(1);
-  //cols -> array of objects
+  const [style, setStyle] = useState({
+    fontWeight: "400",
+    fontSize: "20px"
+  });
+
+  const handleResize = e => {
+    e.preventDefault();
+    e.target.name.style = {
+      ...e.target.name.style,
+
+    }
+  }
   const [cols, setCols] = useState([
-    <Column key={`key:1`} color={firstColor} id={0} />
+    <Column name={'0'} key={`key:0`} id={0} color={firstColor} style={style} resize={handleResize} />
   ]);
 
   /*on render*/
@@ -17,19 +28,19 @@ function App() {
   }, []);
 
   /*functions*/
-  const handleAddCol = e => {
+  const handleAddCol = async e => {
     e.preventDefault();
     setColor(randomColor());
     setId(prev => prev + 1);
-
     const colorChanger = async () => {
       setCols(prev => {
-        return [...prev, <Column key={`key:${id}`} color={color} id={id} />]
+        return [...prev, <Column name={`${id}`} key={`key:${id}`} id={id} color={color} style={style} resize={handleResize} />]
       });
     }
     colorChanger();
-
   }
+
+
 
 
   /*render*/
